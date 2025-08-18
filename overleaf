@@ -1,0 +1,236 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage{placeins}
+\usepackage{tikz}  
+% Diagram এর জন্য
+\usetikzlibrary{arrows.meta, positioning}
+\usepackage{pgfgantt}    % Gantt chart এর জন্য
+\usepackage{caption}     % Figure caption এর জন্য
+
+\geometry{a4paper, margin=1in}
+\setstretch{1.3}
+
+\title{\textbf{NoteX – Collaborative Learning System}\\
+Project Proposal}
+\author{Team Members: NASHSHA ISLAM \& RAHMATUL ISLAM}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Problem Analysis and Motivation}
+In the modern academic environment, students often face difficulties in organizing and sharing their notes.  
+\begin{itemize}
+    \item Notes are usually stored in different formats and locations.  
+    \item Files may get lost, and repeated sharing becomes inefficient.  
+    \item There is no central system dedicated to note sharing and searching.  
+\end{itemize}
+
+Therefore, we propose \textbf{NoteX – Collaborative Learning System}, where students can upload, search, download, and delete their notes in an organized platform. This will enhance collaborative learning among students.
+
+\section{Literature Review}
+There are existing platforms such as Google Drive, Dropbox, and OneDrive which allow file storage and sharing. However, these are generic platforms, not specifically designed for student note sharing.  
+Learning Management Systems (LMS) like Moodle and Blackboard provide advanced functionalities but are often too complex for simple note sharing.  
+Hence, a lightweight, student-friendly system is necessary, focusing solely on \textbf{note sharing and collaborative learning}.  
+
+\section{Methodology}
+The proposed system will consist of the following modules:
+
+\begin{itemize}
+    \item \textbf{Login System:} Students log in with a username and password.
+    \item \textbf{Upload Notes:} Students upload PDF or text files into a dedicated directory.
+    \item \textbf{Search Notes:} Search functionality based on filenames or keywords.
+    \item \textbf{Download Notes:} Students can download existing notes.
+    \item \textbf{Delete Notes:} Students can delete their own uploaded notes.
+\end{itemize}
+
+\begin{center}
+\begin{tikzpicture}[
+    node distance=1.2cm and 2.5cm,
+    every node/.style={font=\sffamily, align=center},
+    rect/.style={draw, rounded corners, thick, minimum width=3cm, minimum height=0.8cm}
+]
+
+% Main actor
+\node[rect] (student) {Student};
+
+% Functions
+\node[rect, right=of student, yshift=3.2cm] (login) {Login System};
+\node[rect, right=of student, yshift=1.6cm] (upload) {Upload Notes};
+\node[rect, right=of student] (search) {Search Notes};
+\node[rect, right=of student, yshift=-1.6cm] (download) {Download Notes};
+\node[rect, right=of student, yshift=-3.2cm] (delete) {Delete Notes};
+
+% Arrows
+\draw[-{Latex[length=3mm]}, thick] (student.east) -- (login.west);
+\draw[-{Latex[length=3mm]}, thick] (student.east) -- (upload.west);
+\draw[-{Latex[length=3mm]}, thick] (student.east) -- (search.west);
+\draw[-{Latex[length=3mm]}, thick] (student.east) -- (download.west);
+\draw[-{Latex[length=3mm]}, thick] (student.east) -- (delete.west);
+
+% Title
+\node[above=1cm of login, font=\large\bfseries] {Notebook Browser};
+
+\end{tikzpicture}
+\captionof{figure}{Use Case Diagram of the Proposed System}
+\end{center}
+
+\section{Feasibility Study}
+\subsection{Economic Feasibility}
+The system requires no additional cost since free tools (Java, SQLite) will be used.  
+
+\subsection{Technical Feasibility}
+\begin{itemize}
+    \item Frontend: Java Swing (for GUI).  
+    \item Backend: File System / SQLite database.  
+    \item Easily expandable and beginner-friendly.  
+\end{itemize}
+
+\subsection{Operational Feasibility}
+\begin{itemize}
+    \item Simple dashboard with intuitive buttons.  
+    \item Easy to learn and use for students.  
+\end{itemize}
+
+\section{Main Phases}
+\begin{enumerate}
+    \item Requirement specification.  
+    \item System design (DFD and UML diagrams).  
+    \item Implementation in Java.  
+    \item Testing and debugging.  
+    \item Deployment and report preparation.
+    \end{enumerate}
+    \begin{center}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|p{4cm}|c|p{4cm}|c|}
+\hline
+SL & Task & Required Week & Responsible Person & Phase\\
+\hline
+1 & Requirement Specification and Data Collection & week 1& Project Manager and Team Members & Research and Planning\\
+\hline
+2 & Finalize Requirements & week 2-3 & Project Manager and Team Members & Analysis\\
+\hline
+3 & System Design , Use Case Diagram, Sequence Diagram & week 4-7 & System Designer and Project Manager & Design\\
+\hline
+4 & System Development & Week 7-14 & Developers & Implementation\\
+\hline
+5 & Beta Release for Users (students , teachers test system) & Week 15-16 & Project Manager and Developers & Testing\\
+\hline
+6 & Feedback Analysis and Requirement Update & Week 17-18 & Project Manager and Team Members & Testing\\
+\hline
+7 & Final Deployment and Documentation & Week 19-20 & All Team Members & Deployment and Maintenance\\
+\hline
+\end{tabular}
+} % end resizebox
+\captionof{table}{Main Phases and Work Distribution}
+\end{center}
+
+\section{Work Plan}
+\begin{figure}[H]
+\centering
+\begin{ganttchart}[
+    hgrid, vgrid,
+    y unit title=0.6cm,
+    y unit chart=0.8cm,
+    x unit=0.6cm,
+    bar height=0.6,
+    bar label font=\normalsize\bfseries,
+    title/.style={fill=gray!20},
+    bar/.style={fill=blue!40},
+    progress label text={}
+]{1}{20}
+  \gantttitle{Months}{20} \\
+  \gantttitle{Month 1}{4}
+  \gantttitle{Month 2}{4}
+  \gantttitle{Month 3}{4}
+  \gantttitle{Month 4}{4}
+  \gantttitle{Month 5}{4} \\
+  \gantttitlelist{1,...,20}{1} \\
+
+  \ganttbar[bar/.append style={fill=cyan!60}]{Planning (15\%)}{1}{3} \\
+  \ganttbar[bar/.append style={fill=orange!60}]{Design (20\%)}{4}{7} \\
+  \ganttbar[bar/.append style={fill=green!60}]{Coding (35\%)}{8}{14} \\
+  \ganttbar[bar/.append style={fill=purple!50}]{Testing (20\%)}{15}{18} \\
+  \ganttbar[bar/.append style={fill=red!50}]{Delivery (10\%)}{19}{20}
+\end{ganttchart}
+\caption{Work Plan of the Project (NoteX – Collaborative Learning System)}
+\end{figure}
+\section{Budget}
+\begin{center}
+\renewcommand{\arraystretch}{1.2} % Row height slightly increased for readability
+\begin{tabular}{|c|l|l|r|r|}
+  \hline
+  \textbf{SL} & \textbf{Category} & \textbf{Item} & \textbf{Existing (Tk)} & \textbf{New (Tk)} \\
+  \hline
+  1 & Human Resources & Developer & 20,000 & 20,000 \\
+  2 &  & Designer & 20,000 & 20,000 \\
+  3 &  & Software Engineer & 35,000 & 35,000 \\
+  \hline
+  4 & Hardware & Laptops & 100,000 & 80,000 \\
+  \hline
+  5 & Software & Design Tools & 4,000 & 3,000 \\
+  6 &  & Collaboration Tools & 5,000 & 3,000 \\
+  \hline
+  7 & Training & Sessions & 3,000 & 2,000 \\
+  8 & Promotion & Social Media Ads & 2,000 & 1,000 \\
+  \hline
+  9 & \multicolumn{2}{|c|}{\textbf{Total Cost}} & \textbf{189,000} & \textbf{164,000} \\
+  \hline
+\end{tabular}
+\captionof{table}{Compact Budget Overview for NoteX System}
+\end{center}
+
+
+
+\section{Conclusion}
+The proposed system \textbf{NoteX – Collaborative Learning System} aims to provide a simple, user-friendly, and effective way for students to share and manage their notes. With functionalities such as login, upload, search, download, and delete, the system will significantly improve collaborative learning.  
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+@article{venkatesan2022,
+  author    = {A. Venkatesan and S. Nageshwaran},
+  title     = {Online Notes Sharing},
+  journal   = {International Journal of Recent Advances in Multidisciplinary Topics},
+  volume    = {3},
+  number    = {4},
+  pages     = {12--13},
+  year      = {2022},
+  month     = apr
+}
+\newpage
+\section*{Contribution of Team Members}
+The development of the project \textbf{“NoteX – Collaborative Learning System”} was completed collaboratively by two team members. Both members actively participated in different phases of the project as follows:
+
+\vspace{0.5em}
+\textbf{NASHSHA ISLAM}
+\begin{itemize}
+    \item Took the responsibility of preparing the Work Plan and Budget Estimation.
+    \item Designed the Gantt chart showing project timeline.
+    \item Ensured that the cost estimation and scheduling of different phases were properly addressed.
+\end{itemize}
+
+\vspace{0.5em}
+\textbf{RAHMATUL ISLAM}
+\begin{itemize}
+    \item Contributed to the Problem Analysis, Literature Review, Methodology, Feasibility Study, System Design, Coding, Testing, and Documentation.
+    \item Worked on writing the main body of the project proposal.
+    \item Implemented the functional details of the system (login, upload, search, download, delete).
+\end{itemize}
+
+\vspace{0.5em}
+\textbf{Summary}
+\begin{itemize}
+    \item \textbf{NASHSHA ISLAM:} Mainly focused on project planning and budgeting (≈ 50\% of total work).
+    \item \textbf{RAHMATUL ISLAM:} Mainly focused on system development, design, and documentation (≈ 50\% of total work).
+\end{itemize}
+
+Thus, the project outcome was achieved successfully by combining the planning expertise of \textbf{NASHSHA ISLAM} with the development and implementation efforts of \textbf{RAHMATUL ISLAM}.
+
+
+\end{document}
